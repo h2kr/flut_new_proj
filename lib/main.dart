@@ -29,6 +29,7 @@ class _StateHome extends State<Home> {
   Widget build(BuildContext context) {
     int currentScreen = 2;
 
+
     SvgPicture device = SvgPicture.asset(
       "assets/icons/DevicePress.svg",
       width: MediaQuery.of(context).size.width / 5,
