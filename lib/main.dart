@@ -45,11 +45,11 @@ class _ButtonBar extends State<Home> {
     wight = MediaQuery.of(context).size.width / 5;
 
     var tabs = [
-      Center(child: Text("DEVICE")),
-      Center(child: Text("STORE")),
-      Center(child: Text("OS")),
-      Center(child: Text("PROCESSES")),
-      Center(child: Text("STATISTIC")),
+      Center(child: Text("DEVICE", style: TextStyle(color: Colors.redAccent[400]),),),
+      Center(child: Text("STORE", style: TextStyle(color: Colors.redAccent[400]))),
+      Center(child: Text("OS", style: TextStyle(color: Colors.redAccent[400]))),
+      Center(child: Text("PROCESSES", style: TextStyle(color: Colors.redAccent[400]))),
+      Center(child: Text("STATISTIC", style: TextStyle(color: Colors.redAccent[400]))),
     ];
 
     void changeColorButton(int index) {
@@ -113,6 +113,7 @@ class _ButtonBar extends State<Home> {
     }
 
     return Scaffold(
+      backgroundColor: Colors.blueGrey[900],
       body: tabs[currentScreen],
       bottomNavigationBar: Stack(
         alignment: Alignment.bottomCenter,
