@@ -1,3 +1,4 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -29,7 +30,32 @@ class Game extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "ем детей онлайн",
       theme: ThemeData(primaryColor: Colors.black),
-      home: Home(),
+      home: AnimatedSplashScreen(
+        splash: Stack(
+          alignment: Alignment.center,
+          children: [
+            SvgPicture.asset("assets/icons/logo.svg"),
+          ],
+        ),
+        splashIconSize: 100,
+        splashTransition: SplashTransition.fadeTransition,
+        backgroundColor: Colors.black,
+        nextScreen:  AnimatedSplashScreen(
+          splash: Stack(
+            alignment: Alignment.center,
+            children: [
+              Text(
+                  "UR MOM GAY",
+                  style: TextStyle(color: Colors.white, fontFamily: "Quantico")
+              ),
+            ],
+          ),
+          splashIconSize: 300,
+          splashTransition: SplashTransition.sizeTransition,
+          backgroundColor: Colors.black,
+          nextScreen: Home(),
+        ),
+      ),
     );
   }
 }
@@ -44,12 +70,47 @@ class _ButtonBar extends State<Home> {
   Widget build(BuildContext context) {
     wight = MediaQuery.of(context).size.width / 5;
 
-    var tabs = [
-      Center(child: Text("DEVICE", style: TextStyle(color: Colors.redAccent[400]),),),
-      Center(child: Text("STORE", style: TextStyle(color: Colors.redAccent[400]))),
-      Center(child: Text("OS", style: TextStyle(color: Colors.redAccent[400]))),
-      Center(child: Text("PROCESSES", style: TextStyle(color: Colors.redAccent[400]))),
-      Center(child: Text("STATISTIC", style: TextStyle(color: Colors.redAccent[400]))),
+    final tabs = [
+      Container(
+        child: Center(
+          child: Text(
+            "DEVICE",
+            style: TextStyle(color: Colors.redAccent),
+          ),
+        ),
+      ),
+      Container(
+        child: Center(
+          child: Text(
+            "STORE",
+            style: TextStyle(color: Colors.lightBlueAccent[100], fontFamily: "Quantico"),
+          ),
+        ),
+      ),
+      Container(
+        child: Center(
+          child: Text(
+            "OS",
+            style: TextStyle(color: Colors.redAccent),
+          ),
+        ),
+      ),
+      Container(
+        child: Center(
+          child: Text(
+            "PROCESSES",
+            style: TextStyle(color: Colors.lightBlueAccent[100]),
+          ),
+        ),
+      ),
+      Container(
+        child: Center(
+          child: Text(
+            "STATISTIC",
+            style: TextStyle(color: Colors.redAccent),
+          ),
+        ),
+      ),
     ];
 
     void changeColorButton(int index) {
@@ -113,11 +174,10 @@ class _ButtonBar extends State<Home> {
     }
 
     return Scaffold(
-      backgroundColor: Colors.blueGrey[900],
+      backgroundColor: Colors.black,
       body: tabs[currentScreen],
-      bottomNavigationBar: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [Row(
+      bottomNavigationBar: Stack(alignment: Alignment.bottomCenter, children: [
+        Row(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -165,8 +225,7 @@ class _ButtonBar extends State<Home> {
             ),
           ],
         ),
-      ]
-      ),
+      ]),
     );
   }
 }
