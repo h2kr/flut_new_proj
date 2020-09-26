@@ -1,22 +1,27 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:flut_new_proj/screens/hardware.dart';
+import 'package:flut_new_proj/screens/os.dart';
+import 'package:flut_new_proj/screens/proc.dart';
+import 'package:flut_new_proj/screens/statistic.dart';
+import 'package:flut_new_proj/screens/store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 int currentScreen = 2;
-double wight;
+double width;
 
 SvgPicture device =
-    SvgPicture.asset("assets/icons/DevicePress.svg", width: wight);
+    SvgPicture.asset("assets/icons/DevicePress.svg", width: width);
 SvgPicture store = SvgPicture.asset(
   "assets/icons/StorePress.svg",
-  width: wight,
+  width: width,
 );
-SvgPicture os = SvgPicture.asset("assets/icons/OsOnPress.svg", width: wight);
+SvgPicture os = SvgPicture.asset("assets/icons/OsOnPress.svg", width: width);
 SvgPicture processes =
-    SvgPicture.asset("assets/icons/ProcPress.svg", width: wight);
+    SvgPicture.asset("assets/icons/ProcPress.svg", width: width);
 SvgPicture statistics =
-    SvgPicture.asset("assets/icons/StatPress.svg", width: wight);
+    SvgPicture.asset("assets/icons/StatPress.svg", width: width);
 
 void main() {
   runApp(Game());
@@ -31,31 +36,16 @@ class Game extends StatelessWidget {
       title: "ем детей онлайн",
       theme: ThemeData(primaryColor: Colors.black),
       home: AnimatedSplashScreen(
-        splash: Stack(
-          alignment: Alignment.center,
-          children: [
-            SvgPicture.asset("assets/icons/logo.svg"),
-          ],
-        ),
-        splashIconSize: 100,
-        splashTransition: SplashTransition.fadeTransition,
-        backgroundColor: Colors.black,
-        nextScreen:  AnimatedSplashScreen(
           splash: Stack(
             alignment: Alignment.center,
             children: [
-              Text(
-                  "UR MOM GAY",
-                  style: TextStyle(color: Colors.white, fontFamily: "Quantico")
-              ),
+              SvgPicture.asset("assets/icons/logo.svg"),
             ],
           ),
-          splashIconSize: 300,
-          splashTransition: SplashTransition.sizeTransition,
+          splashIconSize: 100,
+          splashTransition: SplashTransition.fadeTransition,
           backgroundColor: Colors.black,
-          nextScreen: Home(),
-        ),
-      ),
+          nextScreen: Home()),
     );
   }
 }
@@ -68,51 +58,14 @@ class Home extends StatefulWidget {
 class _ButtonBar extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    wight = MediaQuery.of(context).size.width / 5;
-
-
+    width = MediaQuery.of(context).size.width / 5;
 
     final tabs = [
-      Container(
-        child: Center(
-          child: Text(
-            "DEVICE",
-            style: TextStyle(color: Colors.redAccent),
-          ),
-        ),
-      ),
-      Container(
-        child: Center(
-          child: Text(
-            "STORE",
-            style: TextStyle(color: Colors.lightBlueAccent[100], fontFamily: "Quantico"),
-          ),
-        ),
-      ),
-      Container(
-        child: Center(
-          child: Text(
-            "OS",
-            style: TextStyle(color: Colors.redAccent),
-          ),
-        ),
-      ),
-      Container(
-        child: Center(
-          child: Text(
-            "PROCESSES",
-            style: TextStyle(color: Colors.lightBlueAccent[100]),
-          ),
-        ),
-      ),
-      Container(
-        child: Center(
-          child: Text(
-            "STATISTIC",
-            style: TextStyle(color: Colors.redAccent),
-          ),
-        ),
-      ),
+      hardwareScreen(),
+      storeScreen(),
+      osScreen(),
+      processesScreen(),
+      statisticScreen(),
     ];
 
     void changeColorButton(int index) {
@@ -121,52 +74,50 @@ class _ButtonBar extends State<Home> {
           switch (index) {
             case 0:
               device = SvgPicture.asset("assets/icons/DeviceOnPress.svg",
-                  width: MediaQuery.of(context).size.width / 5);
+                  width: width);
               break;
             case 1:
               store = SvgPicture.asset("assets/icons/StoreOnPress.svg",
-                  width: MediaQuery.of(context).size.width / 5);
+                  width: width);
               break;
 
             case 2:
-              os = SvgPicture.asset("assets/icons/OsOnPress.svg",
-                  width: MediaQuery.of(context).size.width / 5);
+              os = SvgPicture.asset("assets/icons/OsOnPress.svg", width: width);
               break;
 
             case 3:
               processes = SvgPicture.asset("assets/icons/ProcOnPressed.svg",
-                  width: MediaQuery.of(context).size.width / 5);
+                  width: width);
               break;
 
             case 4:
               statistics = SvgPicture.asset("assets/icons/StatOnPress.svg",
-                  width: MediaQuery.of(context).size.width / 5);
+                  width: width);
               break;
           }
 
           switch (currentScreen) {
             case 0:
               device = SvgPicture.asset("assets/icons/DevicePress.svg",
-                  width: MediaQuery.of(context).size.width / 5);
+                  width: width);
               break;
             case 1:
-              store = SvgPicture.asset("assets/icons/StorePress.svg",
-                  width: MediaQuery.of(context).size.width / 5);
+              store =
+                  SvgPicture.asset("assets/icons/StorePress.svg", width: width);
               break;
 
             case 2:
-              os = SvgPicture.asset("assets/icons/OsPress.svg",
-                  width: MediaQuery.of(context).size.width / 5);
+              os = SvgPicture.asset("assets/icons/OsPress.svg", width: width);
               break;
 
             case 3:
-              processes = SvgPicture.asset("assets/icons/ProcPress.svg",
-                  width: MediaQuery.of(context).size.width / 5);
+              processes =
+                  SvgPicture.asset("assets/icons/ProcPress.svg", width: width);
               break;
 
             case 4:
-              statistics = SvgPicture.asset("assets/icons/StatPress.svg",
-                  width: MediaQuery.of(context).size.width / 5);
+              statistics =
+                  SvgPicture.asset("assets/icons/StatPress.svg", width: width);
               break;
           }
 
@@ -176,7 +127,76 @@ class _ButtonBar extends State<Home> {
     }
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Color(0xFF101820),
+        title: Row(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        "B 1000",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontFamily: "Quantico",
+                            color: Colors.greenAccent),
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        "B 129",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontFamily: "Quantico",
+                            color: Colors.redAccent),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 2.0),
+                      child: Container(
+                        alignment: Alignment.bottomRight,
+                        child: Text(
+                          "H2KR_1337",
+                          style:
+                              TextStyle(fontSize: 13, fontFamily: "Quantico"),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Container(
+                          alignment: Alignment.centerRight,
+                          child: SvgPicture.asset("assets/icons/vpn_on.svg")),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              width: 40,
+              height: 40,
+              color: Colors.white,
+            ),
+          ],
+        ),
+      ),
+      backgroundColor: Color(0xFF223344),
       body: tabs[currentScreen],
       bottomNavigationBar: Stack(alignment: Alignment.bottomCenter, children: [
         Row(
