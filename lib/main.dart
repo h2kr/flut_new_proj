@@ -71,6 +71,7 @@ class _ButtonBar extends State<Home> {
     wight = MediaQuery.of(context).size.width / 5;
 
 
+
     final tabs = [
       Container(
         child: Center(
