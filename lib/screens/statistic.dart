@@ -5,7 +5,7 @@ Container statisticScreen() {
   return Container(
       child: Center(
         child: Text(
-          "STATISTIC",
+          "HORNY!!!!!!!!!!!!!!!!!11",
           style: TextStyle(color: Colors.redAccent),
         ),
       ));

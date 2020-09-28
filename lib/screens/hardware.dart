@@ -318,6 +318,14 @@ Widget hardwareScreen() {
                     child: SvgPicture.asset("assets/icons/passcrack.svg"),
                   ),
                   Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset("assets/icons/spyware.svg"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset("assets/icons/ddos.svg"),
+                  ),
+                  Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: SvgPicture.asset("assets/icons/plus.svg"),
                   )

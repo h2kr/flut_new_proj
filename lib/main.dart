@@ -4,6 +4,7 @@ import 'package:flut_new_proj/screens/os.dart';
 import 'package:flut_new_proj/screens/proc.dart';
 import 'package:flut_new_proj/screens/statistic.dart';
 import 'package:flut_new_proj/screens/store.dart';
+import 'package:flut_new_proj/util/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -33,7 +34,7 @@ class Game extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "ем детей онлайн",
+      title: Constants.appName,
       theme: ThemeData(primaryColor: Colors.black),
       home: AnimatedSplashScreen(
           splash: Stack(
@@ -59,6 +60,14 @@ class _ButtonBar extends State<Home> {
   @override
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width / 5;
+
+    final bg = [
+      Constants.bg,
+      Constants.bg,
+      Colors.black,
+      Constants.bg,
+      Constants.bg
+    ];
 
     final tabs = [
       hardwareScreen(),
@@ -128,7 +137,7 @@ class _ButtonBar extends State<Home> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF101820),
+        backgroundColor: Constants.bars,
         title: Row(
           children: [
             Expanded(
@@ -196,7 +205,7 @@ class _ButtonBar extends State<Home> {
           ],
         ),
       ),
-      backgroundColor: Color(0xFF223344),
+      backgroundColor:  bg[currentScreen],
       body: tabs[currentScreen],
       bottomNavigationBar: Stack(alignment: Alignment.bottomCenter, children: [
         Row(
