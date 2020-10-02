@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../body.dart';
 import '../main.dart';
 
 String _deviceName = "POHUY 7Z";
@@ -30,7 +31,6 @@ TextStyle _defaultSyle = TextStyle(
 class Hardware extends StatefulWidget {
   @override
   HardwareState createState() => HardwareState();
-
 }
 
 class HardwareState extends State<Hardware> {
@@ -47,7 +47,6 @@ class HardwareState extends State<Hardware> {
       ),
     );
   }
-
 }
 
 Widget _deviceTitle() {
@@ -62,7 +61,6 @@ Widget _monitorSystem() {
   return Stack(
     children: [
       Container(
-
           alignment: Alignment.bottomLeft,
           color: Constants.bars,
           child: Text(
@@ -83,5 +81,3 @@ Widget _monitorSystem() {
     ],
   );
 }
-
-

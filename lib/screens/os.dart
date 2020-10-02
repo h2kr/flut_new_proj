@@ -5,16 +5,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../body.dart';
+
 SvgPicture _title = SvgPicture.asset(
-  "assets/icons/os_title.svg", width: wScreen / 2,
+  "assets/icons/os_title.svg",
+  width: wScreen / 2,
 );
 
-Widget _buttonScan = _createButton(SvgPicture.asset("assets/icons/os_scan.svg"), "SCAN DEVICE");
-Widget _buttonMessage = _createButton(SvgPicture.asset("assets/icons/os_message.svg"), "MESSAGES");
-Widget _buttonApps = _createButton(SvgPicture.asset("assets/icons/os_apps.svg"), "APPS");
-Widget _buttonBank = _createButton(SvgPicture.asset("assets/icons/os_bank.svg"), "BANK ACCOUNT");
-Widget _buttonLogs = _createButton(SvgPicture.asset("assets/icons/os_logs.svg"), "LOGS");
-Widget _buttonTrade = _createButton(SvgPicture.asset("assets/icons/os_trade.svg"), "TRADING FLOOR");
+Widget _buttonScan =
+    _createButton(SvgPicture.asset("assets/icons/os_scan.svg"), "SCAN DEVICE");
+Widget _buttonMessage =
+    _createButton(SvgPicture.asset("assets/icons/os_message.svg"), "MESSAGES");
+Widget _buttonApps =
+    _createButton(SvgPicture.asset("assets/icons/os_apps.svg"), "APPS");
+Widget _buttonBank =
+    _createButton(SvgPicture.asset("assets/icons/os_bank.svg"), "BANK ACCOUNT");
+Widget _buttonLogs =
+    _createButton(SvgPicture.asset("assets/icons/os_logs.svg"), "LOGS");
+Widget _buttonTrade = _createButton(
+    SvgPicture.asset("assets/icons/os_trade.svg"), "TRADING FLOOR");
 
 class OS extends StatefulWidget {
   @override
@@ -43,7 +52,6 @@ class _OsState extends State<OS> {
       ),
     );
   }
-
 }
 
 Widget _createButton(SvgPicture icon, String title) {
@@ -55,8 +63,7 @@ Widget _createButton(SvgPicture icon, String title) {
             color: Constants.black,
             height: 70,
             width: wScreen,
-            child:
-            Container(
+            child: Container(
                 alignment: Alignment.centerLeft,
                 child: Padding(
                   padding: const EdgeInsets.all(14.0),

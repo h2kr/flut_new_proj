@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../body.dart';
+
 Widget _titleBar = SvgPicture.asset(
   "assets/icons/p_network.svg",
   width: wScreen,
@@ -13,7 +15,6 @@ Widget _titleBar = SvgPicture.asset(
 class Processes extends StatefulWidget {
   @override
   _ProcessesState createState() => _ProcessesState();
-
 }
 
 class _ProcessesState extends State<Processes> {
@@ -39,7 +40,6 @@ class _ProcessesState extends State<Processes> {
       ],
     );
   }
-
 }
 
 Widget _panel(String ip, int progress, String state, String type) {
@@ -57,8 +57,7 @@ Widget _panel(String ip, int progress, String state, String type) {
                   child: Text(
                     ip,
                     style: TextStyle(
-                        color: Constants.white,
-                        fontFamily: Constants.quantico),
+                        color: Constants.white, fontFamily: Constants.quantico),
                   ),
                 ),
                 Padding(

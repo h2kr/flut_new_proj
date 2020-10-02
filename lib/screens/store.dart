@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../body.dart';
 import 'hardware.dart';
 
 double _titleFontSize = 19;
@@ -15,7 +16,8 @@ SvgPicture _container =
 double _defaultPadding = 8;
 SvgPicture _ram = SvgPicture.asset("assets/icons/ram.svg");
 
-Widget _ramGoods = _goodsBar(_ram, "RAM 8GB", "description, description, description ", "B 1000");
+Widget _ramGoods = _goodsBar(
+    _ram, "RAM 8GB", "description, description, description ", "B 1000");
 
 class Store extends StatefulWidget {
   @override
@@ -49,71 +51,67 @@ class _StoreState extends State<Store> {
       ),
     );
   }
-
 }
 
-
-
-Widget _goodsBar( SvgPicture goods, String title, String description, String price) {
+Widget _goodsBar(
+    SvgPicture goods, String title, String description, String price) {
   return Padding(
-    padding:  EdgeInsets.all(2),
+    padding: EdgeInsets.all(2),
     child: Container(
-      color: Constants.bars,
-            child: Row(
+        color: Constants.bars,
+        child: Row(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(_defaultPadding),
+              child: goods,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsets.all(_defaultPadding),
-                  child: goods,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title,
-                        style: TextStyle(
-                            fontFamily: Constants.roboto,
-                            color: Constants.white,
-                            fontSize: _titleFontSize)),
-                    Text(description,
-                        style: TextStyle(
-                            fontFamily: Constants.roboto,
-                            color: Constants.white,
-                            fontSize: 12))
-
-                  ],
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(_defaultPadding),
-                    child: Container(
-                      alignment: Alignment.centerRight,
-                      child: Text(price,
-                          style: TextStyle(
-                              fontFamily: Constants.roboto,
-                              color: Constants.superGreen,
-                              fontSize: _titleFontSize)),
-                    ),
-                  ),
-                ),
+                Text(title,
+                    style: TextStyle(
+                        fontFamily: Constants.roboto,
+                        color: Constants.white,
+                        fontSize: _titleFontSize)),
+                Text(description,
+                    style: TextStyle(
+                        fontFamily: Constants.roboto,
+                        color: Constants.white,
+                        fontSize: 12))
               ],
-            )),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(_defaultPadding),
+                child: Container(
+                  alignment: Alignment.centerRight,
+                  child: Text(price,
+                      style: TextStyle(
+                          fontFamily: Constants.roboto,
+                          color: Constants.superGreen,
+                          fontSize: _titleFontSize)),
+                ),
+              ),
+            ),
+          ],
+        )),
   );
-
 }
 
 Widget _titleBarStore(String title) {
   return Container(
       child: Stack(
-        children: [
-          Container(
-            color: Constants.red,
-              alignment: Alignment.topCenter,
-              child: Text(
-                title,
-                style: TextStyle(
-                    fontFamily: Constants.roboto,
-                    color: Constants.bars,
-                    fontSize: _titleFontSize),
-              )),
-        ],
-      ));
+    children: [
+      Container(
+          color: Constants.red,
+          alignment: Alignment.topCenter,
+          child: Text(
+            title,
+            style: TextStyle(
+                fontFamily: Constants.roboto,
+                color: Constants.bars,
+                fontSize: _titleFontSize),
+          )),
+    ],
+  ));
 }
