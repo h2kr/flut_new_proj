@@ -10,19 +10,24 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 int currentScreen = 2;
-double width;
+
+
+double wScreen;
+double widthIconBnb = wScreen - 5;
+double widthIconBnbMain = wScreen + 5;
+double widthScreen =  (wScreen + 5) * 5;
+
 
 SvgPicture device =
-    SvgPicture.asset("assets/icons/DevicePress.svg", width: width);
-SvgPicture store = SvgPicture.asset(
-  "assets/icons/StorePress.svg",
-  width: width,
-);
-SvgPicture os = SvgPicture.asset("assets/icons/OsOnPress.svg", width: width);
+    SvgPicture.asset("assets/svg_bnb/bnb_hardware.svg", width: widthIconBnb);
+SvgPicture store =
+    SvgPicture.asset("assets/svg_bnb/bnb_store.svg", width: widthIconBnb);
+SvgPicture os =
+    SvgPicture.asset("assets/svg_bnb/bnb_os.svg", width: widthIconBnbMain);
 SvgPicture processes =
-    SvgPicture.asset("assets/icons/ProcPress.svg", width: width);
+    SvgPicture.asset("assets/svg_bnb/bnb_processes.svg", width: widthIconBnb);
 SvgPicture statistics =
-    SvgPicture.asset("assets/icons/StatPress.svg", width: width);
+    SvgPicture.asset("assets/svg_bnb/bnb_profile.svg", width: widthIconBnb);
 
 void main() {
   runApp(Game());
@@ -35,7 +40,7 @@ class Game extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: Constants.appName,
-      theme: ThemeData(primaryColor: Colors.black),
+      theme: Constants.theme,
       home: AnimatedSplashScreen(
           splash: Stack(
             alignment: Alignment.center,
@@ -59,7 +64,7 @@ class Home extends StatefulWidget {
 class _ButtonBar extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    width = MediaQuery.of(context).size.width / 5;
+    wScreen = MediaQuery.of(context).size.width / 5;
 
     final bg = [
       Constants.bg,
@@ -77,56 +82,60 @@ class _ButtonBar extends State<Home> {
       statisticScreen(),
     ];
 
+
+
     void changeColorButton(int index) {
       if (index != currentScreen) {
         setState(() {
-          switch (index) {
-            case 0:
-              device = SvgPicture.asset("assets/icons/DeviceOnPress.svg",
-                  width: width);
-              break;
-            case 1:
-              store = SvgPicture.asset("assets/icons/StoreOnPress.svg",
-                  width: width);
-              break;
-
-            case 2:
-              os = SvgPicture.asset("assets/icons/OsOnPress.svg", width: width);
-              break;
-
-            case 3:
-              processes = SvgPicture.asset("assets/icons/ProcOnPressed.svg",
-                  width: width);
-              break;
-
-            case 4:
-              statistics = SvgPicture.asset("assets/icons/StatOnPress.svg",
-                  width: width);
-              break;
-          }
 
           switch (currentScreen) {
             case 0:
-              device = SvgPicture.asset("assets/icons/DevicePress.svg",
-                  width: width);
+              device = SvgPicture.asset("assets/svg_bnb/bnb_hardware.svg",
+                  width: widthIconBnb);
               break;
             case 1:
               store =
-                  SvgPicture.asset("assets/icons/StorePress.svg", width: width);
+                  SvgPicture.asset("assets/svg_bnb/bnb_store.svg", width: widthIconBnb);
               break;
 
             case 2:
-              os = SvgPicture.asset("assets/icons/OsPress.svg", width: width);
+              os = SvgPicture.asset("assets/svg_bnb/bnb_os.svg", width: widthIconBnb);
               break;
 
             case 3:
               processes =
-                  SvgPicture.asset("assets/icons/ProcPress.svg", width: width);
+                  SvgPicture.asset("aasets/svg_bnb/bnb_processes.svg", width: widthIconBnb);
               break;
 
             case 4:
               statistics =
-                  SvgPicture.asset("assets/icons/StatPress.svg", width: width);
+                  SvgPicture.asset("assets/svg_bnb/bnb_profile.svg", width: widthIconBnb);
+              break;
+          }
+
+          switch (index) {
+            case 0:
+              device = SvgPicture.asset("assets/svg_bnb/bnb_hardware.svg",
+                  width: widthIconBnbMain);
+              break;
+            case 1:
+              store = SvgPicture.asset("assets/svg_bnb/bnb_store.svg",
+                  width: widthIconBnbMain);
+              break;
+
+            case 2:
+              os = SvgPicture.asset("assets/svg_bnb/bnb_os.svg",
+                  width: widthIconBnbMain);
+              break;
+
+            case 3:
+              processes = SvgPicture.asset("assets/svg_bnb/bnb_processes.svg",
+                  width: widthIconBnbMain);
+              break;
+
+            case 4:
+              statistics = SvgPicture.asset("assets/svg_bnb/bnb_profile.svg",
+                  width: widthIconBnbMain);
               break;
           }
 
@@ -134,6 +143,44 @@ class _ButtonBar extends State<Home> {
         });
       }
     }
+
+    Widget bnb() {
+      return Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            Container(
+              color: Constants.black,
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () => changeColorButton(0),
+                    child: device,
+                  ),
+                  GestureDetector(
+                    onTap: () => changeColorButton(1),
+                    child: store,
+                  ),
+                  GestureDetector(
+                    onTap: () => changeColorButton(2),
+                    child: os,
+                  ),
+                  GestureDetector(
+                    onTap: () => changeColorButton(3),
+                    child: processes,
+                  ),
+                  GestureDetector(
+                    onTap: () => changeColorButton(4),
+                    child: statistics,
+                  ),
+                ],
+              ),
+            ),
+          ]);
+    }
+
 
     return Scaffold(
       appBar: AppBar(
@@ -207,56 +254,10 @@ class _ButtonBar extends State<Home> {
       ),
       backgroundColor:  bg[currentScreen],
       body: tabs[currentScreen],
-      bottomNavigationBar: Stack(alignment: Alignment.bottomCenter, children: [
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            GestureDetector(
-              onTap: () {
-                changeColorButton(0);
-              },
-              child: device,
-            ),
-            GestureDetector(
-              onTap: () {
-                changeColorButton(1);
-              },
-              child: ButtonTheme(
-                minWidth: 0,
-                child: store,
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                changeColorButton(2);
-              },
-              child: ButtonTheme(
-                minWidth: 0,
-                child: os,
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                changeColorButton(3);
-              },
-              child: ButtonTheme(
-                minWidth: 0,
-                child: processes,
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                changeColorButton(4);
-              },
-              child: ButtonTheme(
-                minWidth: 0,
-                child: statistics,
-              ),
-            ),
-          ],
-        ),
-      ]),
+      bottomNavigationBar: bnb(),
+
     );
+
+
   }
 }

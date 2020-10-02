@@ -14,4 +14,11 @@ class Constants {
 
   static String quantico = "Quantico";
   static String roboto = "Roboto";
+
+  static ThemeData theme = ThemeData(
+    backgroundColor: bg,
+    primaryColor: bars,
+    accentColor: black,
+    scaffoldBackgroundColor: bg,
+  );
 }
