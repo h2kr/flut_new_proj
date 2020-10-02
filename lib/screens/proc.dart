@@ -10,25 +10,36 @@ Widget _titleBar = SvgPicture.asset(
   width: wScreen,
 );
 
-Widget processesScreen() {
-  return ListView(
-    children: [
-      Column(
-        children: [
-          _panel("132.23.62.342", 23, "Download... ", "SPYWARE 17 LVL"),
-          _panel("99.23.411.333", 23, "Download... ", "SPYWARE 17 LVL"),
-          _panel("132.23.62.342", 23, "Download... ", "SPYWARE 17 LVL"),
-          _panel("132.23.62.342", 23, "Download... ", "SPYWARE 17 LVL"),
-          _panel("99.23.411.333", 23, "Download... ", "SPYWARE 17 LVL"),
-          _panel("132.23.62.342", 23, "Download... ", "SPYWARE 17 LVL"),
-          _panel("132.23.62.342", 23, "Download... ", "SPYWARE 17 LVL"),
-          _panel("99.23.411.333", 23, "Download... ", "SPYWARE 17 LVL"),
-          _panel("132.23.62.342", 23, "Download... ", "SPYWARE 17 LVL"),
-          _panel("132.23.62.342", 23, "Download... ", "SPYWARE 17 LVL")
-        ],
-      ),
-    ],
-  );
+class Processes extends StatefulWidget {
+  @override
+  _ProcessesState createState() => _ProcessesState();
+
+}
+
+class _ProcessesState extends State<Processes> {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return ListView(
+      children: [
+        Column(
+          children: [
+            _panel("132.23.62.342", 23, "Download... ", "SPYWARE 17 LVL"),
+            _panel("99.23.411.333", 23, "Download... ", "SPYWARE 17 LVL"),
+            _panel("132.23.62.342", 23, "Download... ", "SPYWARE 17 LVL"),
+            _panel("132.23.62.342", 23, "Download... ", "SPYWARE 17 LVL"),
+            _panel("99.23.411.333", 23, "Download... ", "SPYWARE 17 LVL"),
+            _panel("132.23.62.342", 23, "Download... ", "SPYWARE 17 LVL"),
+            _panel("132.23.62.342", 23, "Download... ", "SPYWARE 17 LVL"),
+            _panel("99.23.411.333", 23, "Download... ", "SPYWARE 17 LVL"),
+            _panel("132.23.62.342", 23, "Download... ", "SPYWARE 17 LVL"),
+            _panel("132.23.62.342", 23, "Download... ", "SPYWARE 17 LVL")
+          ],
+        ),
+      ],
+    );
+  }
+
 }
 
 Widget _panel(String ip, int progress, String state, String type) {

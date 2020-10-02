@@ -27,18 +27,27 @@ TextStyle _titleStyle = TextStyle(
 TextStyle _defaultSyle = TextStyle(
     fontFamily: Constants.quantico, color: Constants.white, fontSize: 18);
 
+class Hardware extends StatefulWidget {
+  @override
+  HardwareState createState() => HardwareState();
 
+}
 
-Widget hardwareScreen() {
-  return Padding(
-    padding: const EdgeInsets.fromLTRB(0, 12.0, 0, 0),
-    child: Column(
-      children: [
-        _deviceTitle(),
-        _monitorSystem(),
-      ],
-    ),
-  );
+class HardwareState extends State<Hardware> {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 12.0, 0, 0),
+      child: Column(
+        children: [
+          _deviceTitle(),
+          _monitorSystem(),
+        ],
+      ),
+    );
+  }
+
 }
 
 Widget _deviceTitle() {
@@ -53,7 +62,7 @@ Widget _monitorSystem() {
   return Stack(
     children: [
       Container(
-          width: widthScreen,
+
           alignment: Alignment.bottomLeft,
           color: Constants.bars,
           child: Text(

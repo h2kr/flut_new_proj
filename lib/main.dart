@@ -75,10 +75,10 @@ class _ButtonBar extends State<Home> {
     ];
 
     final tabs = [
-      hardwareScreen(),
-      storeScreen(),
-      osScreen(),
-      processesScreen(),
+      Hardware(),
+      Store(),
+      OS(),
+      Processes(),
       statisticScreen(),
     ];
 

@@ -17,29 +17,39 @@ SvgPicture _ram = SvgPicture.asset("assets/icons/ram.svg");
 
 Widget _ramGoods = _goodsBar(_ram, "RAM 8GB", "description, description, description ", "B 1000");
 
-Widget storeScreen() {
-  return Padding(
-    padding: const EdgeInsets.fromLTRB(0, 12.0, 0, 0),
-    child: ListView(
-      children: [
-        Column(
-          children: [
-            _titleBarStore("HARDWARE"),
-            _ramGoods,
-            _ramGoods,
-            _ramGoods,
-            _ramGoods,
-            _ramGoods,
-            _titleBarStore("SOFTWARE"),
-            _ramGoods,
-            _ramGoods,
-            _ramGoods,
-            _ramGoods,
-          ],
-        ),
-      ],
-    ),
-  );
+class Store extends StatefulWidget {
+  @override
+  _StoreState createState() => _StoreState();
+}
+
+class _StoreState extends State<Store> {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 12.0, 0, 0),
+      child: ListView(
+        children: [
+          Column(
+            children: [
+              _titleBarStore("HARDWARE"),
+              _ramGoods,
+              _ramGoods,
+              _ramGoods,
+              _ramGoods,
+              _ramGoods,
+              _titleBarStore("SOFTWARE"),
+              _ramGoods,
+              _ramGoods,
+              _ramGoods,
+              _ramGoods,
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
 }
 
 
