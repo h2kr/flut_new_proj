@@ -105,7 +105,6 @@ Widget _panel(String ip, int progress, String state, String type) {
         ),
       ),
       Container(
-        width: widthScreen,
         height: 1,
         color: Constants.white,
       ),
