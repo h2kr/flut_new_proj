@@ -40,17 +40,6 @@ class Data with ChangeNotifier {
     notifyListeners();
   }
 
-  void changeProtectBtc(int btc) {
-    _protectBtc = btc;
-    print(_protectBtc);
-    notifyListeners();
-  }
-
-  void changeNotProtectBtc(int btc) {
-    _notProtectBtc = btc;
-    notifyListeners();
-  }
-
   void changeParamDevice(Object object) {
     print("change");
     if (object is CPU) {
