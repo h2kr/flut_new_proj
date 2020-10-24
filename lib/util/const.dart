@@ -11,6 +11,7 @@ class Constants {
   static Color white = Colors.white;
   static Color red = Colors.redAccent;
   static Color black = Color(0xFF141616);
+  static Color textColorOs = Color(0xFF97D9E1);
 
   static String quantico = "Quantico";
   static String roboto = "Roboto";

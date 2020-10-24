@@ -1,10 +1,14 @@
 import 'package:flut_new_proj/screens/hardware.dart';
-import 'package:flut_new_proj/screens/os.dart';
+import 'package:flut_new_proj/screens/osPages/os.dart';
 import 'package:flut_new_proj/screens/proc.dart';
+import 'package:flut_new_proj/screens/statistic.dart';
 import 'package:flut_new_proj/screens/store.dart';
 import 'package:flut_new_proj/util/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+
+import 'data/data.dart';
 
 int currentScreen = 2;
 
@@ -13,16 +17,16 @@ double widthIconBnb = wScreen - 5;
 double widthIconBnbMain = wScreen + 5;
 double widthScreen = (wScreen + 5) * 5;
 
-SvgPicture device =
-SvgPicture.asset("assets/svg_bnb/bnb_hardware.svg", width: widthIconBnb);
+SvgPicture hardware =
+    SvgPicture.asset("assets/svg_bnb/bnb_hardware.svg", width: widthIconBnb);
 SvgPicture store =
-SvgPicture.asset("assets/svg_bnb/bnb_store.svg", width: widthIconBnb);
+    SvgPicture.asset("assets/svg_bnb/bnb_store.svg", width: widthIconBnb);
 SvgPicture os =
-SvgPicture.asset("assets/svg_bnb/bnb_os.svg", width: widthIconBnbMain);
+    SvgPicture.asset("assets/svg_bnb/bnb_os.svg", width: widthIconBnbMain);
 SvgPicture processes =
-SvgPicture.asset("assets/svg_bnb/bnb_processes.svg", width: widthIconBnb);
+    SvgPicture.asset("assets/svg_bnb/bnb_processes.svg", width: widthIconBnb);
 SvgPicture statistics =
-SvgPicture.asset("assets/svg_bnb/bnb_profile.svg", width: widthIconBnb);
+    SvgPicture.asset("assets/svg_bnb/bnb_profile.svg", width: widthIconBnb);
 
 class Home extends StatefulWidget {
   @override
@@ -33,15 +37,6 @@ class _ButtonBar extends State<Home> {
   @override
   Widget build(BuildContext context) {
     wScreen = MediaQuery.of(context).size.width / 5;
-
-    final bg = [
-      Constants.bg,
-      Constants.bg,
-      Colors.black,
-      Constants.bg,
-      Constants.bg
-    ];
-
     final tabs = [
       Hardware(),
       Store(),
@@ -55,7 +50,7 @@ class _ButtonBar extends State<Home> {
         setState(() {
           switch (currentScreen) {
             case 0:
-              device = SvgPicture.asset("assets/svg_bnb/bnb_hardware.svg",
+              hardware = SvgPicture.asset("assets/svg_bnb/bnb_hardware.svg",
                   width: widthIconBnb);
               break;
             case 1:
@@ -81,7 +76,7 @@ class _ButtonBar extends State<Home> {
 
           switch (index) {
             case 0:
-              device = SvgPicture.asset("assets/svg_bnb/bnb_hardware.svg",
+              hardware = SvgPicture.asset("assets/svg_bnb/bnb_hardware.svg",
                   width: widthIconBnbMain);
               break;
             case 1:
@@ -123,7 +118,7 @@ class _ButtonBar extends State<Home> {
                     Container(
                       alignment: Alignment.bottomLeft,
                       child: Text(
-                        "B 1000",
+                        "B " + context.watch<Data>().protectBtc.toString(),
                         style: TextStyle(
                             fontSize: 15,
                             fontFamily: "Quantico",
@@ -133,7 +128,7 @@ class _ButtonBar extends State<Home> {
                     Container(
                       alignment: Alignment.bottomLeft,
                       child: Text(
-                        "B 129",
+                        "B " + context.watch<Data>().notProtectBtc.toString(),
                         style: TextStyle(
                             fontSize: 15,
                             fontFamily: "Quantico",
@@ -158,7 +153,7 @@ class _ButtonBar extends State<Home> {
                         child: Text(
                           "H2KR_1337",
                           style:
-                          TextStyle(fontSize: 13, fontFamily: "Quantico"),
+                              TextStyle(fontSize: 13, fontFamily: "Quantico"),
                         ),
                       ),
                     ),
@@ -172,11 +167,17 @@ class _ButtonBar extends State<Home> {
                 ),
               ),
             ),
-            Container(
-              width: 40,
-              height: 40,
-              color: Colors.white,
-            ),
+            FlatButton(
+              onPressed: () {
+                Provider.of<Data>(context, listen: false).protectBtc += 1000;
+                print(Provider.of<Data>(context, listen: false).protectBtc);
+              },
+              child: Container(
+                width: 40,
+                height: 40,
+                color: Colors.white,
+              ),
+            )
           ],
         ),
       );
@@ -193,7 +194,7 @@ class _ButtonBar extends State<Home> {
             children: [
               GestureDetector(
                 onTap: () => changeColorButton(0),
-                child: device,
+                child: hardware,
               ),
               GestureDetector(
                 onTap: () => changeColorButton(1),
@@ -219,9 +220,89 @@ class _ButtonBar extends State<Home> {
 
     return Scaffold(
       appBar: appBar(),
-      backgroundColor: bg[currentScreen],
       body: tabs[currentScreen],
       bottomNavigationBar: bnb(),
+    );
+  }
+}
+
+class TopBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: Constants.bars,
+      title: Row(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Column(
+                children: [
+                  Container(
+                    alignment: Alignment.bottomLeft,
+                    child: Text(
+                      "B " + context.watch<Data>().protectBtc.toString(),
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontFamily: "Quantico",
+                          color: Colors.greenAccent),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.bottomLeft,
+                    child: Text(
+                      "B " + context.watch<Data>().notProtectBtc.toString(),
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontFamily: "Quantico",
+                          color: Colors.redAccent),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 2.0),
+                    child: Container(
+                      alignment: Alignment.bottomRight,
+                      child: Text(
+                        "H2KR_1337",
+                        style: TextStyle(fontSize: 13, fontFamily: "Quantico"),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Container(
+                        alignment: Alignment.centerRight,
+                        child: SvgPicture.asset("assets/icons/vpn_on.svg")),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              print(context.watch<Data>().protectBtc);
+              Provider.of<Data>(context).protectBtc = 1110;
+              print(context.watch<Data>().protectBtc);
+            },
+            child: Container(
+              width: 40,
+              height: 40,
+              color: Colors.white,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

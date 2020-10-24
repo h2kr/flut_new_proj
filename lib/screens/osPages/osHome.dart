@@ -1,11 +1,12 @@
-import 'package:flut_new_proj/main.dart';
-import 'package:flut_new_proj/screens/hardware.dart';
+import 'package:flut_new_proj/screens/osPages/mess.dart';
+import 'package:flut_new_proj/screens/osPages/scan.dart';
 import 'package:flut_new_proj/util/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
-import '../body.dart';
+import '../../body.dart';
+
 
 SvgPicture _title = SvgPicture.asset(
   "assets/icons/os_title.svg",
@@ -13,24 +14,27 @@ SvgPicture _title = SvgPicture.asset(
 );
 
 Widget _buttonScan =
-    _createButton(SvgPicture.asset("assets/icons/os_scan.svg"), "SCAN DEVICE");
+_createButton(SvgPicture.asset("assets/icons/os_scan.svg"), "SCAN DEVICE");
 Widget _buttonMessage =
-    _createButton(SvgPicture.asset("assets/icons/os_message.svg"), "MESSAGES");
+_createButton(SvgPicture.asset("assets/icons/os_message.svg"), "MESSAGES");
 Widget _buttonApps =
-    _createButton(SvgPicture.asset("assets/icons/os_apps.svg"), "APPS");
+_createButton(SvgPicture.asset("assets/icons/os_apps.svg"), "APPS");
 Widget _buttonBank =
-    _createButton(SvgPicture.asset("assets/icons/os_bank.svg"), "BANK ACCOUNT");
+_createButton(SvgPicture.asset("assets/icons/os_bank.svg"), "BANK ACCOUNT");
 Widget _buttonLogs =
-    _createButton(SvgPicture.asset("assets/icons/os_logs.svg"), "LOGS");
+_createButton(SvgPicture.asset("assets/icons/os_logs.svg"), "LOGS");
 Widget _buttonTrade = _createButton(
     SvgPicture.asset("assets/icons/os_trade.svg"), "TRADING FLOOR");
 
-class OS extends StatefulWidget {
+
+
+class OSHome extends StatefulWidget {
   @override
-  _OsState createState() => _OsState();
+  _OSHomeState createState() => _OSHomeState();
+
 }
 
-class _OsState extends State<OS> {
+class _OSHomeState extends State<OSHome> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -40,8 +44,14 @@ class _OsState extends State<OS> {
         children: [
           Column(
             children: [
-              _buttonScan,
-              _buttonMessage,
+              GestureDetector(
+                onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context) => OSMessages())),
+                child: _buttonScan,
+              ),
+              GestureDetector(
+                onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context) => OSMessages())),
+                child: _buttonMessage,
+              ),
               _buttonApps,
               _buttonBank,
               _buttonTrade,
@@ -52,6 +62,7 @@ class _OsState extends State<OS> {
       ),
     );
   }
+
 }
 
 Widget _createButton(SvgPicture icon, String title) {
@@ -62,7 +73,6 @@ Widget _createButton(SvgPicture icon, String title) {
           Container(
             color: Constants.black,
             height: 70,
-            width: wScreen,
             child: Container(
                 alignment: Alignment.centerLeft,
                 child: Padding(
@@ -85,7 +95,7 @@ Widget _createButton(SvgPicture icon, String title) {
         ],
       ),
       Container(
-        height: 20,
+        height: 1,
       )
     ],
   );
