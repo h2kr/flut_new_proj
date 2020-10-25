@@ -202,13 +202,9 @@ class GoodsBar extends StatelessWidget {
                                     price);
                             Provider.of<Data>(context, listen: false)
                                 .changeParamDevice(object);
-                            print(Provider.of<Data>(context, listen: false)
-                                .device
-                                .cpu
-                                .cpuPP);
                           }
                         },
-                        child: Text(price.toString(),
+                        child: Text(price.toString() + "B",
                             style: TextStyle(
                                 fontFamily: Constants.roboto,
                                 color: Constants.superGreen,

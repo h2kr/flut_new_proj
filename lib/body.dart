@@ -167,8 +167,8 @@ class _ButtonBar extends State<Home> {
                 ),
               ),
             ),
-            FlatButton(
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 Provider.of<Data>(context, listen: false).protectBtc += 1000;
                 print(Provider.of<Data>(context, listen: false).protectBtc);
               },
