@@ -204,7 +204,7 @@ class GoodsBar extends StatelessWidget {
                                 .changeParamDevice(object);
                           }
                         },
-                        child: Text(price.toString() + "B",
+                        child: Text(price.toString() + " B",
                             style: TextStyle(
                                 fontFamily: Constants.roboto,
                                 color: Constants.superGreen,
